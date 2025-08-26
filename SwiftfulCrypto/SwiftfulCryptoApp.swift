@@ -7,7 +7,7 @@
 
 // Developer Preview Places
 /*
- HomeView/body: in coin list
+ 
  */
 
 import SwiftUI
