@@ -11,16 +11,22 @@ import Combine
 class HomeViewModel: ObservableObject {
     
     @Published var statistics: [StatisticModel] = []
-    
     @Published var allCoins: [CoinModel] = []
     @Published var portfolioCoins: [CoinModel] = []
     @Published var isloading: Bool = false
     @Published var searchText: String = ""
+    @Published var sortOption: SortOption = .holdings
     
     private let coinDataService = CoinDataService()
     private let marketDataService = MarketDataService()
     private let portfolioDataService = PortfolioDataService()
     private var cancellables: Set<AnyCancellable> = []
+    
+    enum SortOption {
+        case rank, rankReversed
+        case holdings, holdingsReversed
+        case price, priceReversed
+    }
     
     init() {
         addSubscribers()
@@ -30,8 +36,8 @@ class HomeViewModel: ObservableObject {
         // Updates allCoins
         $searchText
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
-            .combineLatest(coinDataService.$allCoins)
-            .map(filterCoins)
+            .combineLatest(coinDataService.$allCoins, $sortOption)
+            .map(filterAndSortCoins)
             .sink { [weak self] (returnedCoins) in
                 self?.allCoins = returnedCoins
             }
@@ -42,7 +48,8 @@ class HomeViewModel: ObservableObject {
             .combineLatest(portfolioDataService.$savedEntities)
             .map(mapAllCoinsToPortfolioCoins)
             .sink { [weak self] returnedcoins in
-                self?.portfolioCoins = returnedcoins
+                guard let self = self else { return }
+                self.portfolioCoins = self.sortPortfolioCoinsIfNeeded(coins: returnedcoins)
             }
             .store(in: &cancellables)
         
@@ -55,6 +62,8 @@ class HomeViewModel: ObservableObject {
                 self?.isloading = false
             }
             .store(in: &cancellables)
+        
+        //
     }
     
     func updatePortfolio(coin: CoinModel, amount: Double) {
@@ -66,6 +75,37 @@ class HomeViewModel: ObservableObject {
         coinDataService.getCoins()
         marketDataService.getData()
         HapticManager.notification(type: .success)
+    }
+    
+    private func filterAndSortCoins(text: String, coins: [CoinModel], sort: SortOption) -> [CoinModel] {
+        var updatedCoins = filterCoins(text: text, coins: coins)
+        sortCoins(coins: &updatedCoins, sort: sort)
+        return updatedCoins
+        
+    }
+    
+    private func sortCoins(coins: inout [CoinModel], sort: SortOption) {
+        switch sort {
+        case .rank, .holdings:
+            coins.sort { $0.rank < $1.rank }
+        case .rankReversed, .holdingsReversed:
+            coins.sort { $0.rank > $1.rank }
+        case .price:
+            coins.sort { $0.currentPrice < $1.currentPrice }
+        case .priceReversed:
+            coins.sort { $0.currentPrice > $1.currentPrice }
+        }
+    }
+    
+    private func sortPortfolioCoinsIfNeeded(coins: [CoinModel]) -> [CoinModel] {
+        switch sortOption {
+        case .holdings:
+            return coins.sorted { $0.currentHoldingsValue > $1.currentHoldingsValue }
+        case .holdingsReversed:
+            return coins.sorted { $0.currentHoldingsValue < $1.currentHoldingsValue }
+        default:
+            return coins
+        }
     }
     
     private func filterCoins(text: String, coins: [CoinModel]) -> [CoinModel] {
