@@ -20,14 +20,19 @@ struct SettingsView: View {
         NavigationStack {
             List {
                 swiftfulThinking
+                    .listRowBackground(Color.theme.background.opacity(0.5))
                 coingecko
+                    .listRowBackground(Color.theme.background.opacity(0.5))
                 developer
+                    .listRowBackground(Color.theme.background.opacity(0.5))
                 application
+                    .listRowBackground(Color.theme.background.opacity(0.5))
             }
+            .scrollContentBackground(.hidden)
+            .background(Color.theme.background)
             .font(.headline)
             .tint(.blue)
             .listStyle(.grouped)
-            
             .navigationTitle("Settings")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {

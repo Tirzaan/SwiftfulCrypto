@@ -23,6 +23,7 @@ class MarketDataService {
         
         maketDataSubscription = NetworkingManager.dowload(url: url)
             .decode(type: GlobleData.self, decoder: JSONDecoder())
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: NetworkingManager.handleCompletion, receiveValue: { [weak self] (returnedGlobleData) in
                 self?.maketData = returnedGlobleData.data
                 self?.maketDataSubscription?.cancel()
