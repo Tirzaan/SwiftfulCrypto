@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="obG-Y5-kRd">
+                                <rect key="frame" x="0.0" y="832" width="393" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tKs-7i-alB">
+                                <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="logo-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="foO-h7-c2y">
+                                        <rect key="frame" x="146.66666666666666" y="283" width="100" height="100"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="6gX-AH-jXV"/>
+                                            <constraint firstAttribute="height" constant="100" id="GZv-Uc-e0h"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="X5y-zg-XDc"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="pUs-Yg-Ili"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="foO-h7-c2y" firstAttribute="centerY" secondItem="tKs-7i-alB" secondAttribute="centerY" id="GnK-A1-AlX"/>
+                                    <constraint firstItem="foO-h7-c2y" firstAttribute="centerY" secondItem="tKs-7i-alB" secondAttribute="centerY" id="OAJ-l1-x2D"/>
+                                    <constraint firstItem="foO-h7-c2y" firstAttribute="centerY" secondItem="tKs-7i-alB" secondAttribute="centerY" id="hyi-MA-rTy"/>
+                                    <constraint firstItem="foO-h7-c2y" firstAttribute="centerX" secondItem="tKs-7i-alB" secondAttribute="centerX" id="ipR-TC-z1p"/>
+                                    <constraint firstItem="foO-h7-c2y" firstAttribute="centerX" secondItem="tKs-7i-alB" secondAttribute="centerX" id="mOp-2H-r8U"/>
+                                    <constraint firstItem="foO-h7-c2y" firstAttribute="centerX" secondItem="tKs-7i-alB" secondAttribute="centerX" id="n25-Ce-yb7"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Bcu-3y-fUS"/>
+                        <color key="backgroundColor" name="LaunchBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="centerX" secondItem="obG-Y5-kRd" secondAttribute="centerX" id="5cz-MP-9tL"/>
+                            <constraint firstItem="tKs-7i-alB" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" id="Pri-rQ-au4"/>
+                            <constraint firstItem="Bcu-3y-fUS" firstAttribute="trailing" secondItem="tKs-7i-alB" secondAttribute="trailing" id="RGj-7J-soU"/>
+                            <constraint firstItem="obG-Y5-kRd" firstAttribute="leading" secondItem="Bcu-3y-fUS" secondAttribute="leading" constant="20" symbolic="YES" id="SfN-ll-jLj"/>
+                            <constraint firstAttribute="bottom" secondItem="obG-Y5-kRd" secondAttribute="bottom" constant="20" id="Y44-ml-fuU"/>
+                            <constraint firstItem="tKs-7i-alB" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="YYK-ve-WX1"/>
+                            <constraint firstItem="tKs-7i-alB" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="heA-x9-3k4"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.671755725190835" y="374.64788732394368"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo-transparent" width="100" height="100"/>
+        <namedColor name="LaunchBackgroundColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
+</document>
