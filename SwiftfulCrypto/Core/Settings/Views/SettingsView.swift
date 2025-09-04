@@ -11,7 +11,7 @@ struct SettingsView: View {
     
     let defaultURL = URL(string: "https://www.example.com")!
     let youtubeURL = URL(string: "https://www.youtube.com/c/swiftfulthinking")!
-    let youtubeCourse = URL(string: "https://www.youtube.com/watch?v=TTYKL6CfbSs&list=PLwvDm4Vfkdphbc3bgy_LpLRQ9DDfFGcFu")!
+    let youtubeCourse = URL(string: "https://https://www.youtube.com/playlist?list=PLwvDm4Vfkdphbc3bgy_LpLRQ9DDfFGcFu")!
     let coffeeURL = URL(string: "https://www.buymeacoffee.com/nicksarno")!
     let coingeckoURL = URL(string: "https://www.coingecko.com")!
     let personalURL = URL(string: "https://www.swiftful-thinking.com")!
