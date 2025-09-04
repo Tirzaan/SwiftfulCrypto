@@ -76,7 +76,7 @@ extension SettingsView {
             }
             .padding(.vertical)
             
-            Link("Visit Coingecko 🥳", destination: coingeckoURL)
+            Link("Visit Coingecko 🦎", destination: coingeckoURL)
         }
     }
     
@@ -96,7 +96,7 @@ extension SettingsView {
             }
             .padding(.vertical)
             
-            Link("Visit Website 🥳", destination: personalURL)
+            Link("Visit Website 🤙", destination: personalURL)
         }
     }
     
